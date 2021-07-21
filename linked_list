@@ -1,0 +1,63 @@
+#include<iostream>
+using namespace std;
+struct node
+{
+    int data;
+    node* next;
+};
+class list
+{
+    private:
+    node *head, *tail;
+    public:
+    list()
+    {
+        head = NULL;
+        tail = NULL;
+    }
+    void add_node(int n)
+    {
+        node *tmp = new node;
+        tmp ->data= n;
+        tmp ->next = NULL;
+        
+        if(head == NULL)
+        {
+            head = tmp;
+            tail = tmp;
+        }
+        else
+        {
+            tail->next = tmp;
+            tail = tail->next;
+        }
+    }
+    void display()
+    {
+        struct node* tmp;
+        tmp = head;
+        while(tmp!= NULL)
+        {
+            cout<<tmp->data<<' '<<endl;
+            tmp = tmp->next;
+        }
+    }
+    
+};
+int main()
+{
+    list l;
+    int k;
+    cout<<"enter the no of nodes"<<endl;
+    cin>>k;
+    while(k!=0)
+    {
+        int val;
+        cout<<"enter the values"<<endl;
+        cin>>val;
+        l.add_node(val);
+        k--;
+    }
+    l.display();
+    return 0;
+}
